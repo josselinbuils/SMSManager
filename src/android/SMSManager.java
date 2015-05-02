@@ -5,12 +5,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract.PhoneLookup;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.lang.StringBuilder;
-
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 
@@ -36,9 +30,7 @@ public class SMSManager extends CordovaPlugin {
           try {
             JSONArray res = getConversations(options);
             callbackContext.success(res);
-          } catch (JSONException e1) {
-            // Ignored
-          } catch (IOException e2) {
+          } catch (JSONException e) {
             // Ignored
           }
         }
@@ -153,7 +145,7 @@ public class SMSManager extends CordovaPlugin {
     return messages;
   }
 
-  private JSONArray getConversations(JSONObject options) throws JSONException, IOException {
+  private JSONArray getConversations(JSONObject options) throws JSONException {
     boolean includeContactsInfos = options.has("includeContactsInfos") ? options.getBoolean("includeContactsInfos") : false;
     boolean includeMessages = options.has("includeMessages") ? options.getBoolean("includeMessages") : false;
 
