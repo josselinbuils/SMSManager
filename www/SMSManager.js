@@ -1,11 +1,27 @@
 var exec = require('cordova/exec');
 
-exports.getConversations = function(options, success, error) {
-	exec(success, error, "SMSManager", "getConversations", [ options ]);
+exports.deleteConversation = function(infos, success, error) {
+	exec(success, error, "SMSManager", "deleteConversation", [ infos ]);
 };
 
-exports.receiveMessages = function(success, error) {
-	exec(success, error, "SMSManager", "receiveMessages", []);
+exports.getConversations = function(success, error) {
+	exec(success, error, "SMSManager", "getConversations", []);
+};
+
+exports.getConvMessages = function(infos, success, error) {
+	exec(success, error, "SMSManager", "getConvMessages", [ infos ]);
+};
+
+exports.getContactPhoto = function(infos, success, error) {
+	exec(success, error, "SMSManager", "getContactPhoto", [ infos ]);
+};
+
+exports.getContactThumbnail = function(infos, success, error) {
+	exec(success, error, "SMSManager", "getContactThumbnail", [ infos ]);
+};
+
+exports.listenEvents = function(success, error) {
+	exec(success, error, "SMSManager", "listenEvents", []);
 };
 
 exports.sendSMS = function(infos, success, error) {

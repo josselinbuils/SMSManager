@@ -1,4 +1,4 @@
-package org.josselinbuils.SMSManager;
+package com.josselinbuils.SMSManager;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class _MMS {
+public final class MMS {
 
 	public static String getMmsAddress(ContentResolver cr, long id) {
 		String address = null;
