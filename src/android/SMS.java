@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.telephony.SmsManager;
-import android.util.Log;
 
 import java.lang.System;
 import java.util.ArrayList;
@@ -17,15 +16,15 @@ public final class SMS {
   private static final int MAXSMS_MESSAGE_LENGTH = 160;
 
   public static void sendSMS(Context context, String phoneNumber, String message) {
-    Log.i(SMSManager.TAG, "SMS->sendSMS()");
+    Log.log("SMS->sendSMS()");
 
-    // Create message
+    // Creates message
     ContentValues sms = new ContentValues();
     sms.put("address", phoneNumber);
     sms.put("date_sent", System.currentTimeMillis());
     sms.put("body", message);
 
-    // Add message to outbox and store new URI
+    // Adds message to outbox and store new URI
     Uri smsUri = context.getContentResolver().insert(Uri.parse("content://sms/outbox"), sms);
 
     /* Sent event */
@@ -42,19 +41,15 @@ public final class SMS {
 
     final PendingIntent deliveredPI = PendingIntent.getBroadcast(context, 0, new Intent("SMS_DELIVERED"), PendingIntent.FLAG_UPDATE_CURRENT);
 
-    /* Send message */
+    /* Sends message */
 
     SmsManager smsManager = SmsManager.getDefault(); 
 
-    if( message.length() > MAXSMS_MESSAGE_LENGTH) {
-      ArrayList<String> messages = smsManager.divideMessage(message);     
-      ArrayList<PendingIntent> sentPIArray = new ArrayList<PendingIntent>(){{ add(sentPI); }};
-      ArrayList<PendingIntent> deliveredPIArray = new ArrayList<PendingIntent>(){{ add(deliveredPI); }};     
-      
-      smsManager.sendMultipartTextMessage(phoneNumber, null, messages, sentPIArray, deliveredPIArray);
-    } else {
-      smsManager.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
-    }
+    ArrayList<String> messages = smsManager.divideMessage(message);     
+    ArrayList<PendingIntent> sentPIArray = new ArrayList<PendingIntent>(){{ add(sentPI); }};
+    ArrayList<PendingIntent> deliveredPIArray = new ArrayList<PendingIntent>(){{ add(deliveredPI); }};
+
+    smsManager.sendMultipartTextMessage(phoneNumber, null, messages, sentPIArray, deliveredPIArray);
 
     Events.sendEvent("dataUpdated");
   }

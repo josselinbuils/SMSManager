@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.util.Log;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -15,7 +14,7 @@ public class SMSReceived extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent)  {
-      Log.i(SMSManager.TAG, "SMSReceived: sms received.");
+      Log.log("SMSReceived: sms received.");
 
       final Bundle bundle = intent.getExtras();
 

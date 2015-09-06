@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
 
@@ -33,13 +32,13 @@ public class SMSSent extends BroadcastReceiver {
       int resultCode = getResultCode();
 
       if (resultCode == Activity.RESULT_OK) {
-        Log.i(SMSManager.TAG, "SMSSent: message sent.");
+        Log.log("SMSSent: message sent.");
 
         // Add message to sent folder
         context.getContentResolver().insert(Uri.parse("content://sms/sent"), sms);
       
       } else { // Fail
-        Log.e(SMSManager.TAG, "SMSSent: fail to send message (code " + resultCode + ").");
+        Log.error("SMSSent: fail to send message (code " + resultCode + ").");
 
         // Add error to message
         sms.put("error_code", resultCode);

@@ -117,6 +117,7 @@
 		<source-file src="src/android/Contacts.java" target-dir="src/org/josselinbuils/SMSManager/SMSManager" />
 		<source-file src="src/android/Conversations.java" target-dir="src/org/josselinbuils/SMSManager/SMSManager" />
 		<source-file src="src/android/Events.java" target-dir="src/org/josselinbuils/SMSManager/SMSManager" />
+		<source-file src="src/android/Log.java" target-dir="src/org/josselinbuils/SMSManager/SMSManager" />
 		<source-file src="src/android/MMS.java" target-dir="src/org/josselinbuils/SMSManager/SMSManager" />
 		<source-file src="src/android/SMS.java" target-dir="src/org/josselinbuils/SMSManager/SMSManager" />
 		<source-file src="src/android/SMSManager.java" target-dir="src/org/josselinbuils/SMSManager/SMSManager" />

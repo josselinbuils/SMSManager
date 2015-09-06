@@ -24,6 +24,10 @@ exports.listenEvents = function(success, error) {
 	exec(success, error, "SMSManager", "listenEvents", []);
 };
 
+exports.listenLogs = function(success, error) {
+	exec(success, error, "SMSManager", "listenLogs", []);
+};
+
 exports.sendSMS = function(infos, success, error) {
 	exec(success, error, "SMSManager", "sendSMS", [ infos ]);
 };

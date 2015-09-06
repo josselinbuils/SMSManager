@@ -87,6 +87,19 @@ public class SMSManager extends CordovaPlugin {
       // Send result
       callbackContext.sendPluginResult(res);
       
+    } else if (action.equals("listenLogs")) {
+
+      Log.listenLogs(callbackContext);
+
+      // Create an empty result
+      PluginResult res = new PluginResult(PluginResult.Status.NO_RESULT);
+
+      // Ask to keep listen for callbacks
+      res.setKeepCallback(true);
+
+      // Send result
+      callbackContext.sendPluginResult(res);
+      
     } else if (action.equals("sendSMS")) {
 
       if (infos != null && infos.has("phoneNumber") && infos.has("body")) {
