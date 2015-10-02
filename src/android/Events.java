@@ -36,7 +36,7 @@ public final class Events {
         e.printStackTrace();
     }
 
-    Intent notificationIntent = new Intent(context, com.josselinbuils.youbisms.CordovaApp.class);
+    Intent notificationIntent = context.getPackageManager().getLaunchIntentForPackage("com.josselinbuils.youbisms"); //new Intent(context, MainActivity.class);
     notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     PendingIntent intent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
     notification.setContentIntent(intent);
