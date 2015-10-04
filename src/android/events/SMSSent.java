@@ -36,7 +36,7 @@ public class SMSSent extends BroadcastReceiver {
 
         // Add message to sent folder
         context.getContentResolver().insert(Uri.parse("content://sms/sent"), sms);
-      
+
       } else { // Fail
         Log.error("SMSSent: fail to send message (code " + resultCode + ").");
 
@@ -46,5 +46,7 @@ public class SMSSent extends BroadcastReceiver {
         // Add message to outbox
         context.getContentResolver().insert(Uri.parse("content://sms/outbox"), sms);
       }
+
+      Events.sendEvent("dataUpdated");
     }
   }
